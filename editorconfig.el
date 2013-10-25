@@ -145,14 +145,15 @@
 
 ;;;###autoload
 (defun edconf-find-file-hook ()
-  (when (executable-find edconf-exec-path)
+  (if (executable-find edconf-exec-path)
     (let ((props (edconf-parse-properties (edconf-get-properties))))
       (edconf-set-indentation (gethash 'indent_style props)
                               (gethash 'indent_size props)
                               (gethash 'tab_width props))
       (edconf-set-line-ending (gethash 'end_of_line props))
       (edconf-set-trailing-nl (gethash 'insert_final_newline props))
-      (edconf-set-trailing-ws (gethash 'trim_trailing_whitespace props)))))
+      (edconf-set-trailing-ws (gethash 'trim_trailing_whitespace props)))
+    (message "Cannot find `edconf-exec-path'")))
 
 ;;;###autoload
 (add-hook 'find-file-hook 'edconf-find-file-hook)
