@@ -65,7 +65,7 @@
           python-indent size
           ruby-indent-level size
           sh-basic-offset size
-      		web-mode-markup-indent-offset size
+          web-mode-markup-indent-offset size
           web-mode-css-indent-offset size
           web-mode-code-indent-offset size
           ;(make-local-variable 'sgml-basic-offset) size
